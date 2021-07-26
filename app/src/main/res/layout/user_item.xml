@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:layout_marginHorizontal="8dp"
+    app:cardCornerRadius="35dp"
+    app:cardBackgroundColor="#AFF5E8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCustName_userItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:maxLines="1"
+            android:textSize="40sp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:ellipsize="end"
+            android:text="name"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCustNRIC_userItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:maxLines="1"
+            android:textSize="40sp"
+            android:layout_below="@id/tvCustName_userItem"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:ellipsize="end"
+            android:text="nric"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQueueNo_userItem"
+            android:layout_below="@id/tvCustNRIC_userItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GE00"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+
+            android:textSize="40sp"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

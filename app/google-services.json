@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "73480994861",
+    "project_id": "mqms-25ad5",
+    "storage_bucket": "mqms-25ad5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73480994861:android:b1d77786029a80d741b8a4",
+        "android_client_info": {
+          "package_name": "com.example.mqms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73480994861-g2003l0lkt26sn1ph7q90tgimogarcl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB92PNIXtMl73GhtgSiTNf_HRWEwuchrd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73480994861-g2003l0lkt26sn1ph7q90tgimogarcl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73480994861:android:059c948a8cf4cab941b8a4",
+        "android_client_info": {
+          "package_name": "com.example.mqms_staff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73480994861-g2003l0lkt26sn1ph7q90tgimogarcl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB92PNIXtMl73GhtgSiTNf_HRWEwuchrd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73480994861-g2003l0lkt26sn1ph7q90tgimogarcl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

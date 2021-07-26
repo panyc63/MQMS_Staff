@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home_page">
+
+
+    <TextView
+        android:id="@+id/tv_Welc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="Welcome back"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_Customer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:clickable="true"
+        android:orientation="vertical"
+        app:cardBackgroundColor="#F9F9F9"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Welc"
+        android:focusable="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+
+            android:id="@+id/imgCust"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginVertical="20dp"
+            android:src="@drawable/customer_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imgCust"
+            app:layout_constraintEnd_toEndOf="@id/imgCust"
+            app:layout_constraintStart_toStartOf="@id/imgCust"
+            android:text="Customer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_Setting"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        app:cardBackgroundColor="#F9F9F9"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toEndOf="@id/cardview_Customer"
+        app:layout_constraintTop_toTopOf="@id/cardview_Customer"
+        app:layout_constraintBottom_toBottomOf="@id/cardview_Customer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+
+                android:id="@+id/imgSetting"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginVertical="20dp"
+                android:src="@drawable/setting_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imgSetting"
+                app:layout_constraintEnd_toEndOf="@id/imgSetting"
+                app:layout_constraintStart_toStartOf="@id/imgSetting"
+                android:text="Setting" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_myInfo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="30dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:clickable="true"
+        android:orientation="vertical"
+        app:cardBackgroundColor="#F9F9F9"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="@id/cardview_Customer"
+        app:layout_constraintEnd_toEndOf="@id/cardview_Customer"
+        app:layout_constraintTop_toBottomOf="@id/cardview_Customer"
+        android:focusable="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+
+                android:id="@+id/imgUserProfile"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginVertical="20dp"
+                android:src="@drawable/user_profile_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imgUserProfile"
+                app:layout_constraintEnd_toEndOf="@id/imgUserProfile"
+                app:layout_constraintStart_toStartOf="@id/imgUserProfile"
+                android:text="User Profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
