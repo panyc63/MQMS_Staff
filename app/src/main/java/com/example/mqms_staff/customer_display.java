@@ -24,7 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,10 +57,15 @@ public class customer_display extends AppCompatActivity implements customerAdapt
         queueMap.put("Sales Agreement","SA");
         queueMap.put("Loans","L");
 
+        Date date = new Date();
+        SimpleDateFormat dateFormat;
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formatDate = dateFormat.format(date);
+
         String dept = queueMap.get(userClass.getDepartment());
         initRecyclerView();
         // TODO Realtime Update on the queue
-        db.collection("Queue").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection(formatDate).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException error) {
                 customerList.clear();

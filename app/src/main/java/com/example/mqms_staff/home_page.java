@@ -15,7 +15,7 @@ import com.example.mqms_staff.Classes.UserClass;
 import java.io.Serializable;
 
 public class home_page extends AppCompatActivity {
-    private CardView btnCustomer,btnProfile;
+    private CardView btnCustomer,btnProfile,btnGenerateReport;
     private TextView tvWelc;
 
     @Override
@@ -44,6 +44,17 @@ public class home_page extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),user_profile.class);
                 intent.putExtra("userDetail", (Serializable)userClass);
                 startActivity(intent);
+            }
+        });
+
+        btnGenerateReport = findViewById(R.id.cardView_generateReport);
+
+        btnGenerateReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),generateReport.class);
+                startActivity(intent);
+
             }
         });
 

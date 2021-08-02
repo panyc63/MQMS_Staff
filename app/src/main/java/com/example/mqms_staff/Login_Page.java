@@ -52,10 +52,10 @@ public class Login_Page extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id, password;
+                String id;
                 Log.d(TAG,getToken());
 
-                id = _id.getText().toString();
+                id = _id.getText().toString().trim().toUpperCase();
 
                 if (id.equals("")) {
                     _id.setError("Please enter ID");
@@ -71,9 +71,10 @@ public class Login_Page extends AppCompatActivity {
                             DocumentSnapshot dSnap = task.getResult();
                             if(dSnap.exists()) {
                                 UserClass uClass = dSnap.toObject(UserClass.class);
-                                Log.d(TAG,uClass.getCounter());
+                                String userID = dSnap.getId();
                                 Intent intent = new Intent(getApplicationContext(), Login_Page2.class);
                                 intent.putExtra("userDetail",(Serializable) uClass);
+                                intent.putExtra("userID", userID);
                                 startActivity(intent);
 
                             } else {

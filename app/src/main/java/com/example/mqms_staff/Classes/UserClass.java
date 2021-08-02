@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserClass implements Serializable {
     String Role;
     String Name;
+    String Email;
     String Department;
     String Counter;
     String imgSrc;
@@ -68,5 +69,13 @@ public class UserClass implements Serializable {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }

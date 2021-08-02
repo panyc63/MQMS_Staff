@@ -135,5 +135,44 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_generateReport"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="30dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:clickable="true"
+        android:orientation="vertical"
+        app:cardBackgroundColor="#F9F9F9"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="@id/cardview_Setting"
+        app:layout_constraintEnd_toEndOf="@id/cardview_Setting"
+        app:layout_constraintTop_toBottomOf="@id/cardview_Setting"
+        android:focusable="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+
+                android:id="@+id/imgGenerateReport"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginVertical="20dp"
+                android:src="@mipmap/generate_report_icon_foreground" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imgGenerateReport"
+                app:layout_constraintEnd_toEndOf="@id/imgGenerateReport"
+                app:layout_constraintStart_toStartOf="@id/imgGenerateReport"
+                android:text="Generate Report" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

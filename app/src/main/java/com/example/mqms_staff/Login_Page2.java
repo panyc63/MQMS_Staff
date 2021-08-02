@@ -44,10 +44,14 @@ public class Login_Page2 extends AppCompatActivity {
 
         Intent intent = getIntent();
         UserClass userClass = (UserClass) intent.getSerializableExtra("userDetail");
+        String userID = intent.getExtras().getString("userID");
         imgView = findViewById(R.id.login_img);
 
         String imgSrc = userClass.getImgSrc();
-        Picasso.get().load(imgSrc).into(imgView);
+        Picasso.get()
+                .load(imgSrc)
+                .into(imgView);
+        
 
         _welc = findViewById(R.id.tv_Welc_Login);
         _welc.setText("Welcome! " + userClass.getName());
@@ -60,7 +64,7 @@ public class Login_Page2 extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pass = _password.getText().toString();
+                String pass = _password.getText().toString().trim();
 
                 BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(), password);
                 if (result.verified) {
@@ -71,6 +75,8 @@ public class Login_Page2 extends AppCompatActivity {
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("counterNo",userClass.getCounter());
                     editor.putString("dept", userClass.getDepartment());
+                    editor.putString("userID", userID);
+
                     editor.apply();
 
                     startActivity(intent1);

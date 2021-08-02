@@ -5,11 +5,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -19,12 +21,14 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 
 import com.example.mqms_staff.Adapter.FcmNotificationSender;
+import com.example.mqms_staff.Classes.Report_Class;
 import com.example.mqms_staff.Classes.UserClass;
 import com.example.mqms_staff.Classes.customer;
 import com.google.firebase.firestore.DocumentReference;
@@ -113,7 +117,7 @@ public class CustomerReport extends AppCompatActivity {
         startTimer();
 
 
-        db.collection("Queue").document(cust.getQueueNo()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        db.collection("Queue").document(queueNo).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 customer cust1 = documentSnapshot.toObject(customer.class);
@@ -123,18 +127,46 @@ public class CustomerReport extends AppCompatActivity {
                     showNotification("Queue Acknowledged", queueNo+" has acknowledged the Queue");
                     btnSubmit.setEnabled(true);
                     etFeedback.setEnabled(true);
-                } else if (!cust1.getAcknowledge()) {
-                    cancelTimer();
-                    setVibrate();
-                    showNotification("Queue was not acknowledged", queueNo+" did not acknowledged the Queue");
                 }
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Date endDate = new Date();
+                String endTime = dateFormat_time.format(endDate);
+                String feedback = etFeedback.getText().toString().trim();
+                Report_Class rClass = new Report_Class(cust.getName(),formatDate,formatTime,endTime,cust.getQueueType(),getUserID(),feedback);
+                String documentName = getUserID() + " , " + formatDate +" , " + formatTime;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setCancelable(true);
+                builder.setTitle("End Queue");
+                builder.setMessage("Are you sure you want to end the queue?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.collection("Report").document(documentName).set(rClass);
+                        db.collection(formatDate).document(cust.getQueueNo()).delete();
+                        dialog.cancel();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
             }
         });
 
     }
 
     void startTimer() {
-        cTimer = new CountDownTimer(10000, 1000) {
+        cTimer = new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
             public void onFinish() {
@@ -188,5 +220,10 @@ public class CustomerReport extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.createNotificationChannel(notificationChannel);
     }
+
+    private String getUserID(){
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("userPref", 0); // 0 - for private mode
+        return pref.getString("userID","DEFAULT");
+    } // end get token
 
 }
